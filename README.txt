@@ -46,6 +46,8 @@ After installing the dependencies, you can run the app using the following comma
 
 python run.py
 
+Note : if you want to add a car picture as an admin, please put the image inside the images folder.
+
 Credits
 
 This project was developed by :
