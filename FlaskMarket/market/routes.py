@@ -133,7 +133,6 @@ def contract_submit():
     car = Car(1, 'BMW', 2001, 'Diesel', 4, 'Automatique', 1000, '123456', 'bmw.jpg')
     car_data = car.get_car_by_id(item_id)
     car_price = car.get_prix_location(item_id)
-    flash(car_price)
     
     if form.validate_on_submit() and form2.validate_on_submit():
 
