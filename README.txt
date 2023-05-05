@@ -13,6 +13,8 @@ Admins can sign in using the following credentials:
 Simple users can access the home page, cars page, and checkout form.
 Admins can add, delete, or modify cars in the database.
 
+Please import the database location_voiture, lunch XAMPP or WAMPServer to launch your localhost.
+
 __init__.py sets up various configurations for the application. It sets up the path for storing images, connects to a MySQL database, sets up SQLAlchemy for database management. It also sets up a Login Manager for user authentication.
 
 There are four classes defined in models.py: Login, Car, Contract, and Payment, each with its own methods for connecting to the location_voiture database.
@@ -31,6 +33,8 @@ Flask
 Flask-MySQLdb
 Flask-WTF
 Flask-login
+flask-werkzug
+
 
 You can install them using pip:
 
