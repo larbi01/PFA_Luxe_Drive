@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Car Page
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+    <form class="form-register" method="post" action="{{ url_for('add_car') }}"  enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <label for="car_image">Car Image:</label>
+            <input type="file" name="car_image" id="car_image" class="form-control-file">
+        </div>
+    
+        {{ form.marque.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.marque(class="form-control", placeholder="Enter the Marque") }}
+        </div>
+    
+        {{ form.model.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.model(class="form-control", placeholder="Enter the Model") }}
+        </div>
+    
+        {{ form.type_carburant.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.type_carburant(class="form-control", placeholder="Enter Type Carburant") }}
+        </div>
+    
+        {{ form.nombre_place.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.nombre_place(class="form-control", placeholder="Enter Nbr Places") }}
+        </div>
+    
+        {{ form.transmission.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.transmission(class="form-control", placeholder="Enter Transmission") }}
+        </div>
+    
+        {{ form.prix_location.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.prix_location(class="form-control", placeholder="Price / Day") }}
+        </div>
+    
+        {{ form.disponibilite.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-3">
+            {{ form.disponibilite(class="form-control", placeholder="Enter Disponibilite") }}
+        </div>
+    
+        {{ form.matricule.label() }}
+        <div class="d-flex flex-row align-items-center mb-4 col-md-8">
+            {{ form.matricule(class="form-control", placeholder="Enter Matricule") }}
+        </div>
+    
+        {{ form.submit(class="btn btn-primary btn-lg w-40") }}
+    </form>
+</div>
+<style>
+    body {
+    background-color: #212121;
+    color: white
+    }
+ </style>
+{% endblock %}

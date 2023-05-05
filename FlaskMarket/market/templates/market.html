@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+Market Page
+{% endblock %}
+
+
+{% block content %}
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">Marque</th>
+            <th scope="col">model</th>
+            <th scope="col">Carburant</th>
+            <th scope="col">Nbr_Places</th>
+            <th scope="col">Transmission</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Disponibilite</th>
+            <th scope="col">Matricule</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for item in dataItem %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
+            <td>{{ item[5] }}</td>
+            <td>{{ item[6] }}</td>
+            <td>{{ item[7] }}</td>
+            <td>{{ item[8] }}</td>
+            <td>
+                {% if item[7] == 1 %}
+    <button class="btn btn-outline btn-info" onclick="location.href='{{ url_for('switch_availability', item_id=item[0], availability=0) }}';">Switch Availability</button>
+    {% else %}
+    <button class="btn btn-outline btn-success" onclick="location.href='{{ url_for('switch_availability', item_id=item[0], availability=1) }}';">Switch Availability</button>
+    {% endif %}
+
+                <a href="{{ url_for('delete_car', item_id=item[0]) }}" class="btn btn-outline btn-danger" onclick="return confirm('Sur ?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+            
+    </tbody>
+</table>
+<style>
+    body {
+    background-color: #212121;
+    color: white
+    }
+ </style>
+{% endblock %}

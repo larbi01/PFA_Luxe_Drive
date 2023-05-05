@@ -1,0 +1,79 @@
+{% extends 'first.html' %}
+{% block title %}
+Cars PAGE
+{% endblock %}
+
+{% block content %}
+<main>
+
+  <img  src="{{ url_for('image', filename='port.png' ) }}" alt="..." style="width: 100%; height: auto; object-fit: cover;">
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for item in dataItem %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{ url_for('image', filename=item[9]) }}" class="bd-placeholder-img card-img-top" width="100%" height="225" focusable="false">
+
+        
+            <div class="card-body">
+              
+              <h5 class="card-title">{{ item[1] }} {{ item[2] }}</h5>
+              <p class="card-text">Carburant: {{ item[3] }}<br>
+                                  Nombre de places: {{ item[4] }}<br>
+                                  Transmission: {{ item[5] }}</p>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button  type="button" onclick="window.location.href='/payment?item_id={{ item[0] }}'" class="btn btn-sm btn-outline-secondary">Purchase</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                </div>
+                <small class="text-muted">{{ item[6] }} MAD/Jour</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+{% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <div class="row align-items-center">
+      <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+
+      <div class="col-lg-4 text-lg-end">
+          <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+          <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+      </div>
+  </div>
+  </div>
+</footer>
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

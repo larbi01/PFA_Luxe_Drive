@@ -1,0 +1,233 @@
+{% extends 'first.html' %}
+
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<main>
+<!-- Masthead-->
+
+    <img  src="{{ url_for('image', filename='banner.png' ) }}" alt="..." style="width: 100%; height: auto; object-fit: cover;">
+
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Services</h2>
+            <h3 class="section-subheading text-muted">Our Prioprity as LUXE DRIVE is to please you</h3>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-gem fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Luxury Car Rental</h4>
+                <p class="text-muted">Experience the thrill of driving a high-end luxury car with our Luxury Car Rental service.Our cars are well-maintained and regularly serviced, ensuring a smooth and comfortable ride.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-plane-arrival fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Airport Pickup</h4>
+                <p class="text-muted">We know how exhausting air travel can be, which is why we offer a convenient Airport Pickup and Drop-off service. Our driver will meet you at the airport, help you with your luggage, and drive you to your destination in comfort and style.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-calendar-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Long-term Rental</h4>
+                <p class="text-muted">Whether you're on a business trip or taking a long vacation, we offer flexible rental periods to suit your needs. Our cars are well-maintained and come with a range of features, including GPS and Bluetooth connectivity.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Portfolio</h2>
+            <h3 class="section-subheading text-muted">Luxe Drive Disposes of a wide range of Luxury Cars.</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 1-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link"  href="{{ url_for('cars_page') }}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="{{ url_for('image', filename='bently.png' ) }}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Bently Ghost</div>
+                        <div class="portfolio-caption-subheading text-muted">2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 2-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link"  href="{{ url_for('cars_page') }}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="{{ url_for('image', filename='red_audi.png' ) }}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Audi A8</div>
+                        <div class="portfolio-caption-subheading text-muted">2022</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 3-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link"  href="{{ url_for('cars_page') }}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        
+
+                        <img class="img-fluid" src="{{ url_for('image', filename='mercedes_wagon.png' ) }}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Mercedes G-Wagon</div>
+                        <div class="portfolio-caption-subheading text-muted">2023</div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</section>
+<!-- About-->
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">About</h2>
+            <h3 class="section-subheading text-muted">Experience the luxury of the road with Luxe Drive</h3>
+        </div>
+        <ul class="timeline">
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ url_for('image', filename='1.jpg' ) }}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>2009-2011</h4>
+                        <h4 class="subheading">Our Humble Beginnings</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">LUXE DRIVE started in 2009 as a small car rental business with just a few cars. Despite the challenges of starting a new business, the team was committed to providing high-quality service at affordable prices. Over the next few years, LUXE DRIVE gained a reputation for excellence, and customers began to flock to the company for their rental needs.</p></div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ url_for('image', filename='2.jpg' ) }}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>March 2011</h4>
+                        <h4 class="subheading">An Agency is Born</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">In March 2011, LUXE DRIVE officially became an agency, with a wider range of vehicles and more services available to customers.</p></div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ url_for('image', filename='3.jpg' ) }}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>December 2015</h4>
+                        <h4 class="subheading">Transition to Full Service</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">As the years went on, LUXE DRIVE continued to grow and expand. In December 2015, the company transitioned to a full-service model, offering everything from basic rentals to customized packages for special occasions. With a focus on customer satisfaction, LUXE DRIVE quickly became one of the most popular car rental agencies in the area.</p></div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ url_for('image', filename='4.jpg' ) }}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>July 2020</h4>
+                        <h4 class="subheading">Phase Two Expansion</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">In July 2020, LUXE DRIVE embarked on a new phase of expansion, introducing new vehicles and services to meet the needs of an ever-growing customer base. With a commitment to quality, affordability, and excellent customer service, LUXE DRIVE is proud to be one of the leading car rental agencies in the region, serving customers with the same dedication and passion as they did during their humble beginnings.</p></div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>
+                        Be Part
+                        <br />
+                        Of Our
+                        <br />
+                        Story!
+                    </h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- Team-->
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+            <h3 class="section-subheading text-muted">This Website was Created By:</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{{ url_for('image', filename='chaimae.jpg' ) }}" alt="..." />
+                    <h4>Chaimae Oukhouy</h4>
+                    <p class="text-muted">Co Developer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{{ url_for('image', filename='larbi.jpeg' ) }}" alt="..." />
+                    <h4>Larbi Ouadeih</h4>
+                    <p class="text-muted">Lead Developer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/larbi01" target="_blank" aria-label="Larbi Ouadeih Github Profile"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2"  href="https://www.linkedin.com/in/larbi-ouadeih-2b1a5b229/" target="_blank" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{{ url_for('image', filename='ziko.jpeg' ) }}" alt="..." />
+                    <h4>Zakaria Messous</h4>
+                    <p class="text-muted">Lead Designer</p>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">This Website was created for a PFA Project given By : Mr.Ameksa </p></div>
+        </div>
+    </div>
+</section>
+<footer class="footer py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</main>
+
+<script src="{{ url_for('send_js', path='scripts.js' ) }}"></script>
+      <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+{% endblock %}

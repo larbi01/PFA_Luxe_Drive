@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>Checkout example · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body class="bg-body-tertiary">
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}" role="alert">
+            <button type="button" class="m1-2 nb-1 close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+          </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="{{ url_for('image', filename='confirmation.png' ) }}" alt="" width="72" height="57">
+      <h2>Checkout form</h2>
+      <p class="lead">Below is an example form built entirely with form controls using Python. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    </div>
+    <div class="row g-5">
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">{{ car_data.marque }}</span>
+                <span class="badge bg-primary rounded-pill">{{ car_data.model }}</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">{{ car_data.type_carburant }}</h6>
+                        
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">{{ car_data.transmission }}</h6>
+                        
+                    </div>
+                    
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>{{ car_data.prix_location }}</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Billing address</h4>
+
+        <form  method="POST" class="form-register" action="{{ url_for('contract_submit') }}" enctype="multipart/form-data" >
+          {{ form.csrf_token }}
+          <div class="row g-3">
+
+            <div class="col-sm-6" >
+              {{ form.nom.label(class="form-label") }}
+              {{ form.nom(type="text", class="form-control") }}
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6" >
+              {{ form.prenom.label(class="form-label") }}
+              {{ form.prenom(type="text", class="form-control") }}
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6" >
+              {{ form.start_date.label(class="form-label") }}
+              {{ form.start_date(type="date", class="form-control") }}
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6" >
+              {{ form.finish_date.label(class="form-label") }}
+              {{ form.finish_date(type="date", class="form-control") }}
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+          </div>
+          
+
+          <div class="col-12">
+            {{ form.mail.label(class="form-label") }}
+            {{ form.mail(type="email", class="form-control", placeholder="example@admin.co") }}
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+
+          <div class="col-12">
+            {{ form.adresse.label(class="form-label") }}
+            {{ form.adresse(type="text", class="form-control", placeholder="1234 Main St") }}
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+ 
+
+            <div class="col-md-5">
+              {{ form.pays.label(class="form-label") }}
+            {{ form.pays(type="text", class="form-control", placeholder="Pays") }}
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+            </div>
+
+            <div class="col-md-4">
+              {{ form.ville.label(class="form-label") }}
+            {{ form.ville(type="text", class="form-control", placeholder="Ville") }}
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+            </div>
+
+            <div class="col-md-3">
+            {{ form.zip.label(class="form-label") }}
+            {{ form.zip(type="number", class="form-control", placeholder="000") }}
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+          
+          <h4 class="mb-3">Payment</h4>
+<br>
+          <!-- radio buttons for payment method -->
+          <div class="form-group">
+            <label class="form-check-label">
+              <input type="radio" name="payment_method" value="credit_card" class="form-check-input payment-method" checked>Pay with credit card
+            </label>
+            <br>
+            <label class="form-check-label">
+              <input type="radio" name="payment_method" value="cash" class="form-check-input payment-method" id="cash-radio">Pay with cash
+            </label>
+          </div>
+          <br><br>
+          
+          <div class="payment-form-container row gy-3" name="payment_method">
+            <div class="col-md-6">
+              {{ form2.nom_carte.label(class="form-label") }}
+              {{ form2.nom_carte(type="text", class="form-control", placeholder="Name On Card") }}
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+          
+            <div class="col-md-6">
+              {{ form2.numero_carte.label(class="form-label") }}
+              {{ form2.numero_carte(type="number", class="form-control", placeholder="Number On Card") }}
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+          
+            <div class="col-md-3">
+              {{ form2.expiration.label(class="form-label") }}
+              {{ form2.expiration(type="date", class="form-control", id="expiration" ) }}
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+          
+            <div class="col-md-3">
+              {{ form2.cvv.label(class="form-label") }}
+              {{ form2.cvv(type="number", class="form-control") }}
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+          </div>
+          <div class="confirm-message hidden">
+            <p>Please call 123-456-7890 to confirm your rental.</p>
+          </div>
+          <hr class="my-4">
+          
+          {{ form2.submit(class="btn btn-primary btn-lg w-30") }}
+          
+          <script>
+            const cashRadio = document.getElementById('cash-radio');
+            const creditCardRadio = document.querySelector('input[value="credit_card"]');
+            const paymentFormContainer = document.querySelector('.payment-form-container');
+            const confirmationMessage = document.querySelector('.confirm-message');
+          
+            cashRadio.addEventListener('change', function() {
+              if (cashRadio.checked) {
+                paymentFormContainer.classList.add('hidden');
+                confirmationMessage.classList.remove('hidden');
+              }
+            });
+          
+            creditCardRadio.addEventListener('change', function() {
+              if (creditCardRadio.checked) {
+                paymentFormContainer.classList.remove('hidden');
+                confirmationMessage.classList.add('hidden');
+              }
+            });
+          </script>
+          
+          
+          <style>
+            .confirm-message {
+              display: block;
+            }
+            .hidden {
+              display: none;
+              }
+          .hidden {
+            display: none;
+          }
+          </style>
+          
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">&copy; 2017–2023 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#start-date').datepicker({
+      format: 'yyyy-mm-dd',
+      startDate: new Date(),
+    });
+  });
+</script>
+
+<style>
+  .container {
+  max-width: 960px;
+}
+</style>
+    
+
+      
+  </body>
+</html>
