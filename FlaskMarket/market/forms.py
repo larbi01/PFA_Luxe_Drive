@@ -80,10 +80,7 @@ class CarForm(FlaskForm):
     def validate_nombre_porte(self, nombre_porte_to_check):
         if nombre_porte_to_check.data < 0:
             raise ValidationError('The number of doors should be strictly positive')
-    #check if matricule is in a format like 11111 A 11
-    def validate_matricule(self, matricule_to_check):
-        if not re.match(r'^[0-9]{5} [A-Z]{1} [0-9]{2}$', matricule_to_check.data):
-            raise ValidationError('The registration number should be in the format 11111 A 11')
+
     #check if image was uploaded
     def validate_car_image(self, car_image_to_check):
         if not car_image_to_check.data:
